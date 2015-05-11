@@ -1,0 +1,9 @@
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\obj\Debug\MailSenderSchool.Form1.resources
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\obj\Debug\MailSenderSchool.Properties.Resources.resources
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\obj\Debug\MailSenderSchool.csproj.GenerateResource.Cache
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\bin\Debug\MailSenderSchool.exe.config
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\bin\Debug\MailSenderSchool.exe
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\bin\Debug\MailSenderSchool.pdb
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\obj\Debug\MailSenderSchool.exe
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\obj\Debug\MailSenderSchool.pdb
+C:\Users\zhluktenko\OneDrive\Visual Studio 2012\Projects\MailSenderSchool\MailSenderSchool\obj\Debug\MailSenderSchool.csprojResolveAssemblyReference.cache
