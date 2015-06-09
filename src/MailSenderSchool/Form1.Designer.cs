@@ -52,15 +52,16 @@
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.RecipientsBox = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.AttachGroupBox = new System.Windows.Forms.GroupBox();
             this.AttachmentsBox = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.subjectBox = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.RecipientsBox = new System.Windows.Forms.ListBox();
             this.sendButton = new MailSenderSchool.CustomButton();
             this.LoadMailPwButton = new MailSenderSchool.CustomButton();
+            this.AddMailButton = new MailSenderSchool.CustomButton();
             this.LoadMailButton = new MailSenderSchool.CustomButton();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -263,24 +264,15 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.LightGray;
-            this.tabPage2.Controls.Add(this.LoadMailButton);
+            this.tabPage2.Controls.Add(this.AddMailButton);
             this.tabPage2.Controls.Add(this.RecipientsBox);
+            this.tabPage2.Controls.Add(this.LoadMailButton);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(293, 74);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Recipients";
-            // 
-            // RecipientsBox
-            // 
-            this.RecipientsBox.AutoWordSelection = true;
-            this.RecipientsBox.Location = new System.Drawing.Point(7, 7);
-            this.RecipientsBox.Name = "RecipientsBox";
-            this.RecipientsBox.Size = new System.Drawing.Size(171, 61);
-            this.RecipientsBox.TabIndex = 0;
-            this.RecipientsBox.Text = "";
-            this.RecipientsBox.TextChanged += new System.EventHandler(this.RecipientsBox_TextChanged);
             // 
             // panel1
             // 
@@ -336,6 +328,15 @@
             this.subjectBox.TabIndex = 1;
             this.subjectBox.TextChanged += new System.EventHandler(this.subjectBox_TextChanged);
             // 
+            // RecipientsBox
+            // 
+            this.RecipientsBox.FormattingEnabled = true;
+            this.RecipientsBox.Location = new System.Drawing.Point(6, 3);
+            this.RecipientsBox.Name = "RecipientsBox";
+            this.RecipientsBox.ScrollAlwaysVisible = true;
+            this.RecipientsBox.Size = new System.Drawing.Size(200, 69);
+            this.RecipientsBox.TabIndex = 2;
+            // 
             // sendButton
             // 
             this.sendButton.DisplayFocusCues = false;
@@ -351,20 +352,31 @@
             // 
             this.LoadMailPwButton.DisplayFocusCues = false;
             this.LoadMailPwButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LoadMailPwButton.Location = new System.Drawing.Point(215, 13);
+            this.LoadMailPwButton.Location = new System.Drawing.Point(224, 13);
             this.LoadMailPwButton.Name = "LoadMailPwButton";
             this.LoadMailPwButton.Size = new System.Drawing.Size(63, 49);
             this.LoadMailPwButton.TabIndex = 4;
             this.LoadMailPwButton.Text = "Load Default";
             this.LoadMailPwButton.UseVisualStyleBackColor = true;
             // 
+            // AddMailButton
+            // 
+            this.AddMailButton.DisplayFocusCues = false;
+            this.AddMailButton.Location = new System.Drawing.Point(212, 48);
+            this.AddMailButton.Name = "AddMailButton";
+            this.AddMailButton.Size = new System.Drawing.Size(75, 23);
+            this.AddMailButton.TabIndex = 3;
+            this.AddMailButton.Text = "Add E-mail";
+            this.AddMailButton.UseVisualStyleBackColor = true;
+            this.AddMailButton.Click += new System.EventHandler(this.customButton1_Click);
+            // 
             // LoadMailButton
             // 
             this.LoadMailButton.DisplayFocusCues = false;
             this.LoadMailButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LoadMailButton.Location = new System.Drawing.Point(201, 19);
+            this.LoadMailButton.Location = new System.Drawing.Point(212, 3);
             this.LoadMailButton.Name = "LoadMailButton";
-            this.LoadMailButton.Size = new System.Drawing.Size(75, 49);
+            this.LoadMailButton.Size = new System.Drawing.Size(75, 42);
             this.LoadMailButton.TabIndex = 1;
             this.LoadMailButton.Text = "Load default";
             this.LoadMailButton.UseVisualStyleBackColor = true;
@@ -421,7 +433,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripMenuItem openLogToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox RecipientsBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox subjectBox;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -433,6 +444,8 @@
         private CustomButton LoadMailPwButton;
         private CustomButton LoadMailButton;
         private CustomButton sendButton;
+        private CustomButton AddMailButton;
+        public System.Windows.Forms.ListBox RecipientsBox;
     }
 }
 

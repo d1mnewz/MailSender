@@ -10,7 +10,7 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
-
+using System.Configuration;
 namespace MailSenderSchool
 { 
      // add email validation in tab2 + info about email on click
@@ -64,7 +64,7 @@ namespace MailSenderSchool
             //this.tabPage1.Controls.Add(btn3);
             //btn3.Location = new Point(this.tabPage2.Width - 75, this.tabPage2.Height - 60);
             //btn3.Click += btn3_Click;
-           
+            this.AddMailButton.BackColor = Color.LightBlue;
             #endregion
             #region toolTips
             ToolTip toolTip1 = new ToolTip();
@@ -73,7 +73,7 @@ namespace MailSenderSchool
             toolTip1.ReshowDelay = 500;
             toolTip1.SetToolTip(this.SenderEmailBox, "Enter Email");
             toolTip1.SetToolTip(this.SenderPasswordBox, "Enter Name");
-            toolTip1.SetToolTip(this.RecipientsBox, "Enter emails using semicolons");
+            toolTip1.SetToolTip(this.RecipientsBox, "Recipients Box");
             #endregion
             this.panel1.Select();
            
@@ -140,16 +140,15 @@ namespace MailSenderSchool
         void CheckAll()
         {
 
-                
                 if (this.MailBodyBox.Text == null || this.MailBodyBox.Text == "" || String.IsNullOrWhiteSpace(this.MailBodyBox.Text) == true)
                 {
                     this.sendButton.Enabled = false;
                     return;
                 }
-                else if (String.IsNullOrWhiteSpace(this.RecipientsBox.Text) == true)
+                else if (this.RecipientsBox.Items.Count == 0)
                 {
-                    this.sendButton.Enabled = false;
-                    return;
+                   this.sendButton.Enabled = false;
+                   return;
                 }
                 else if (this.SenderEmailBox.Text == "" && this.SenderEmailBox.Text == null)
                 {
@@ -212,20 +211,24 @@ namespace MailSenderSchool
        
         public void LoadRecipients()
         {
-            this.RecipientsBox.Clear();
-            foreach (var str in this.obj.Recipients)
+
+            this.RecipientsBox.Items.Clear();
+            for (int i = 0; i < obj.Recipients.Count; i++)
+            //(var str in this.obj.Recipients)
             {
-                if (this.obj.Recipients.Last<MailAddress>() != str)
-                    this.RecipientsBox.Text += str + "\n";
-                else this.RecipientsBox.Text += str;
+
+                if (this.obj.Recipients.Last<MailAddress>() != obj.Recipients[i])
+                    this.RecipientsBox.Items.Add(obj.Recipients[i]);
+                else this.RecipientsBox.Text += obj.Recipients[i];
             }
         }
         void btn3_Click(object sender, EventArgs e)
         {
             this.SenderEmailBox.UseSystemPasswordChar = false;
-            this.SenderEmailBox.Text = "icanmakeyoucryo.o@gmail.com";
+            this.SenderEmailBox.Text = ConfigurationSettings.AppSettings["Mail"];
             this.SenderPasswordBox.UseSystemPasswordChar = true;
-            this.SenderPasswordBox.Text = "arizonaboys";
+            this.SenderPasswordBox.Text = ConfigurationSettings.AppSettings["PasswordMail"];
+           // MessageBox.Show(ConfigurationSettings.AppSettings.AllKeys["PasswordMail"], ConfigurationSettings.AppSettings.AllKeys["Mail"]);
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -235,6 +238,7 @@ namespace MailSenderSchool
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            this.SenderPasswordBox.UseSystemPasswordChar = true;
             if (this.SenderPasswordBox.Text.Length > 4)
                 this.SenderPasswordBox.BackColor = Color.YellowGreen;
             else
@@ -333,7 +337,7 @@ namespace MailSenderSchool
             this.MailBodyBox.Clear();
             this.SenderEmailBox.Clear();
             this.SenderPasswordBox.Clear();
-            this.RecipientsBox.Clear();
+            this.RecipientsBox.Items.Clear();
             this.subjectBox.Clear();
             
             this.obj.atts = new List<Attachment>();
@@ -359,6 +363,15 @@ namespace MailSenderSchool
         {
             CheckAll();
         }
+
+        private void customButton1_Click(object sender, EventArgs e)
+        {
+            Addmail form = new Addmail();
+            form.ShowDialog();
+            // to add to Recipients list 
+            // to add to obj.recipients
+        }
+
 
     }
 }
